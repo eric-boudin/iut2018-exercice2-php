@@ -9,7 +9,7 @@ class LoginController extends AbstractController
 {
     public function indexAction()
     {
-        return (new ViewModel('login/index.phtml'))->render();
+        return new ViewModel('login/index.phtml');
     }
 
     public function loginAction()

@@ -49,7 +49,7 @@ class Router
             if ($controller instanceof \Controller\AbstractController) {
                 $controller->setRequest($request);
             }
-            $controller->$method();
+            $controller->dispatch($method);
         }
     }
 }

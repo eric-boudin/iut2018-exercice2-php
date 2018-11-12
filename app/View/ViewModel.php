@@ -3,7 +3,7 @@ namespace View;
 
 use Config;
 
-class ViewModel
+class ViewModel implements ViewModelInterface
 {
     private $view;
     private $parameters;
@@ -14,7 +14,7 @@ class ViewModel
         $this->parameters = $parameters;
     }
 
-    public function render()
+    public function render() : string
     {
         if (!Config::hasConfig('view_dir')) {
             throw new ViewDirException('Unable to find view_dir configuration.');
@@ -23,7 +23,11 @@ class ViewModel
         $file = Config::getConfig('view_dir').'/'.$this->view;
 
         if (file_exists($file)) {
+            ob_start();
             include $file;
+            $html = ob_get_clean();
         }
+
+        return $html;
     }
 }
