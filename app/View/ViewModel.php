@@ -20,7 +20,19 @@ class ViewModel implements ViewModelInterface
             throw new ViewDirException('Unable to find view_dir configuration.');
         }
 
-        $file = Config::getConfig('view_dir').'/'.$this->view;
+        if (!Config::hasConfig('theme_name')) {
+            throw new ThemeNotFoundException('Unable to find the theme_name configuration.');
+        }
+
+        $viewDir = Config::getConfig('view_dir');
+        $themeName = Config::getConfig('theme_name');
+        $themeDir = "{$viewDir}/{$themeName}";
+
+        if (!is_dir($themeDir)) {
+            throw new ThemeNotFoundException("{$themeName} is not a directory.");
+        }
+
+        $file = "{$themeDir}/{$this->view}";
 
         if (file_exists($file)) {
             ob_start();

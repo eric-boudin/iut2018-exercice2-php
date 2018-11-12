@@ -1,6 +1,7 @@
 <?php
 define('APP_ROOT', dirname(__DIR__));
 use Routing\Router as R;
+use Db\Connection;
 
 final class Application
 {
@@ -13,6 +14,11 @@ final class Application
     public function loadRoutes()
     {
         include APP_ROOT . '/config/routes.php';
+    }
+
+    public function loadDb()
+    {
+        Config::setConfig('db_connection', new Connection(include APP_ROOT . '/config/db.config.php'));
     }
 
     public function loadSession()
@@ -34,6 +40,7 @@ final class Application
         $this->loadConfig();
         $this->loadRoutes();
         $this->loadSession();
+        $this->loadDb();
         $this->dispatch();
     }
 }

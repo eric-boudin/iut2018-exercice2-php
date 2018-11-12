@@ -1,6 +1,8 @@
 <?php
 namespace View;
 
-class ViewDirException extends \Exception
+use Exception;
+
+class ViewDirException extends Exception
 {
 }
