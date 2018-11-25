@@ -19,6 +19,9 @@ class Connection
 
     public function connect()
     {
+        if ($this->pdo !== null) {
+            return;
+        }
         $db = $this->configs['database'] ?? false;
         $host = $this->configs['hostname'] ?? false;
         $port = $this->configs['port'] ?? false;
@@ -34,6 +37,15 @@ class Connection
             return;
         }
         unset($this->pdo);
+    }
+
+    public function escape($value)
+    {
+        return $this->pdo->quote($value);
+    }
+
+    public function fetchRow($select)
+    {
     }
 
     public function __destruct()

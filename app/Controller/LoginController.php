@@ -16,9 +16,10 @@ class LoginController extends AbstractController
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
-        $user = new User;
-        $user->email = 'denizart.benjamin@gmail.com';
-        $user->password = 'test';
+        $user = User::findOneBy([
+            'email' => $email,
+            'password' => sha1($password)
+        ]);
 
         if ($user->email === $email
             && $user->password = $password) {
