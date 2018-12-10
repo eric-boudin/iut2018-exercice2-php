@@ -16,13 +16,13 @@ class LoginController extends AbstractController
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
+        /** @var User $user */
         $user = User::findOneBy([
             'email' => $email,
             'password' => sha1($password)
         ]);
 
-        if ($user->email === $email
-            && $user->password = $password) {
+        if ($user->user_id) {
             Session::setSession('email', $user->email);
             $this->redirect('/home');
         } else {

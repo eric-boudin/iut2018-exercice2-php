@@ -21,8 +21,12 @@ trait DbEntity
 
     public static function findOneBy(array $where)
     {
+        $table = static::$table;
+        if (!$table) {
+            throw new \RuntimeException('Specify table property in ' . get_class($this) . '.');
+        }
         self::getConnection()->connect();
-        $select = "SELECT * FROM {$this->table}";
+        $select = "SELECT * FROM {$table}";
         if (!empty($where)) {
             $select .= " WHERE ";
             $wheres = [];
@@ -33,5 +37,12 @@ trait DbEntity
             $select .= implode(' AND ', $wheres);
         }
         $row = self::getConnection()->fetchRow($select);
+        if (!empty($row)) {
+            $object = new static;
+            foreach ($row as $key => $value) {
+                $object->$key = $value;
+            }
+            return $object;
+        }
     }
 }

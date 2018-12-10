@@ -44,8 +44,14 @@ class Connection
         return $this->pdo->quote($value);
     }
 
-    public function fetchRow($select)
+    /**
+     *
+     * @return array|null
+     */
+    public function fetchRow(string $select, int $fetchStyle = PDO::FETCH_ASSOC)
     {
+        $stmt = $this->pdo->query($select);
+        return $stmt->fetch($fetchStyle);
     }
 
     public function __destruct()
