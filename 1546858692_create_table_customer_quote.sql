@@ -159,7 +159,17 @@ create table order_address
 (
   order_id         int unsigned not null,
   quote_address_id int unsigned not null,
+  street_1         varchar(255) not null,
+  street_2         varchar(255) null,
+  postcode         varchar(255) not null,
+  city             varchar(255) not null,
+  country          varchar(255) not null,
+  firstname        varchar(255) null,
+  lastname         varchar(255) null,
+  customer_id      int unsigned null,
   primary key (order_id, quote_address_id),
+  constraint order_address_customer_customer_id_fk
+    foreign key (customer_id) references customer (customer_id),
   constraint order_address_order_fk
     foreign key (order_id) references `order` (order_id),
   constraint order_address_quote_address_fk
