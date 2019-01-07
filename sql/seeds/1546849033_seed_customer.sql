@@ -1,0 +1,8 @@
+INSERT INTO `customer` (`email`, `password`, `firstname`, `lastname`, `gender`, `dob`) VALUES ('test@example.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '1', '1980-10-10');
+INSERT INTO `customer` (`email`, `password`, `firstname`, `lastname`, `gender`, `dob`) VALUES ('test1@example.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '2', '1981-10-10');
+INSERT INTO `customer` (`email`, `password`, `firstname`, `lastname`, `gender`, `dob`) VALUES ('test2@example.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '1', '1982-10-10');
+INSERT INTO `customer_address` (`customer_id`, `firstname`, `lastname`, `street_1`, `postcode`, `city`, `country_id`) VALUES ('1', 'Test', 'Test', '94, Varennes des Roches Gasnie', '37220', 'Sazilly', 'FR');
+INSERT INTO `customer_address` (`customer_id`, `firstname`, `lastname`, `street_1`, `postcode`, `city`, `country_id`) VALUES ('1', 'Test', 'Test', '158, Le Grand Coitron', '41170', 'Souday', 'FR');
+INSERT INTO `customer_address` (`customer_id`, `firstname`, `lastname`, `street_1`, `postcode`, `city`, `country_id`) VALUES ('1', 'Test', 'Test', '71, Au Maigre', '33430', 'Marimbault', 'FR');
+INSERT INTO `customer_address` (`customer_id`, `firstname`, `lastname`, `street_1`, `postcode`, `city`, `country_id`) VALUES ('1', 'Test', 'Test', '11, Résidence des Mouettes', '35140', 'Saint-Jean-sur-Couesnon', 'FR');
+INSERT INTO `customer_address` (`customer_id`, `firstname`, `lastname`, `street_1`, `postcode`, `city`, `country_id`) VALUES ('2', 'Test', 'Test', '69, Les Quatre Chênes', '21350', 'Arnay-Sous-Vitteaux', 'FR');
