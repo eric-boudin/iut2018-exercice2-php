@@ -1,0 +1,21 @@
+CREATE TABLE `quote_item` (
+  `quote_item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quote_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `sku` varchar(60) NOT NULL,
+  `ean` varchar(13) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` decimal(12,4) unsigned DEFAULT NULL,
+  `qty` int(10) unsigned NOT NULL,
+  `discount_amount` decimal(12,4) unsigned DEFAULT '0.0000',
+  `row_total` decimal(12,4) unsigned DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) unsigned DEFAULT '0.0000',
+  `row_total_incl_tax` decimal(12,4) unsigned DEFAULT '0.0000',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`quote_item_id`),
+  KEY `IDX_QUOTE_ITEM_QUOTE` (`quote_id`),
+  KEY `IDX_QUOTE_ITEM_PRODUCT` (`product_id`),
+  CONSTRAINT `FK_QUOTE_ITEM_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_QUOTE_ITEM_QUOTE` FOREIGN KEY (`quote_id`) REFERENCES `quote` (`quote_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

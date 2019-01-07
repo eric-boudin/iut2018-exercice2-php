@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `cms_page` (
+CREATE TABLE `cms_page` (
   `cms_page_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `url_key` VARCHAR(255) NULL,
   `title` VARCHAR(255) NOT NULL,
@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS `cms_page` (
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`cms_page_id`),
-  UNIQUE INDEX `url_key_UNIQUE` (`url_key` ASC))
-ENGINE = InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE INDEX `UQ_CMS_URL_KEY` (`url_key` ASC))
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;

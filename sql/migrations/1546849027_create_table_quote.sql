@@ -1,0 +1,22 @@
+CREATE TABLE `quote` (
+  `quote_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `subtotal` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `subtotal_ind_tax` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `shipping_amount` decimal(12,4) unsigned DEFAULT '0.0000',
+  `shipping_amount_incl_tax` decimal(12,4) unsigned DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) unsigned DEFAULT '0.0000',
+  `grand_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_item` int(10) unsigned DEFAULT '0',
+  `total_qty` int(10) unsigned DEFAULT '0',
+  `coupon_code` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `shipping_method` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `payment_method` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`quote_id`),
+  KEY `IDX_QUOTE_CUSTOMER` (`customer_id`),
+  CONSTRAINT `FK_QUOTE_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
