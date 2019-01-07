@@ -1,14 +1,14 @@
-CREATE TABLE IF NOT EXISTS `homestead`.`quote` (
+CREATE TABLE IF NOT EXISTS `quote` (
   `quote_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `customer_id` INT(10) UNSIGNED NOT NULL,
-  `grand_total` DECIMAL(12,4) NOT NULL,
-  `subtotal_ind_tax` DECIMAL(12,4) NOT NULL,
-  `subtotal` DECIMAL(12,4) NOT NULL,
-  `discount_amount` DECIMAL(12,4) NOT NULL,
-  `is_active` TINYINT NOT NULL,
+  `customer_id` INT(10) UNSIGNED NULL,
+  `grand_total` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `subtotal_ind_tax` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `subtotal` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `discount_amount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NULL DEFAULT current_timestamp,
   `updated_at` TIMESTAMP NULL,
   `coupon_code` VARCHAR(20) NULL,
   PRIMARY KEY (`quote_id`),
-  UNIQUE INDEX `coupon_code_UNIQUE` (`coupon_code` ASC))
-ENGINE = InnoDB
+  UNIQUE INDEX `UQ_QUOTE_COUPON_CODE` (`coupon_code` ASC))
+ENGINE = InnoDB DEFAULT CHARSET=utf8;
