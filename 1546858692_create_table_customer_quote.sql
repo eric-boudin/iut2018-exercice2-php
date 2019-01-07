@@ -1,60 +1,39 @@
-create table customer
+CREATE TABLE customer
 (
-  customer_id int unsigned auto_increment
-    primary key,
-  firstname   varchar(255) not null,
-  lastname    varchar(255) not null,
-  email       varchar(255) not null,
-  genre       tinyint(1)   null,
-  created_at  timestamp    null
+  customer_id INT(10) unsigned auto_increment primary key,
+  firstname   VARCHAR(255) not null,
+  lastname    VARCHAR(255) not null,
+  email       VARCHAR(255) not null,
+  gender      tinyint(1)   null,
+  created_at  timestamp    DEFAULT CURRENT_TIMESTAMP
 );
 
 create table customer_address
 (
-  customer_address_id int unsigned auto_increment
-    primary key,
-  street_1            varchar(255) not null,
-  street_2            varchar(255) null,
-  postcode            varchar(255) not null,
-  city                varchar(255) not null,
-  country             varchar(255) not null,
-  firstname           varchar(255) null,
-  lastname            varchar(255) null,
-  customer_id         int unsigned null,
+  customer_address_id int unsigned auto_increment primary key,
+  street_1            VARCHAR(255) not null,
+  street_2            VARCHAR(255) null,
+  postcode            VARCHAR(255) not null,
+  city                VARCHAR(255) not null,
+  country             VARCHAR(255) not null,
+  firstname           VARCHAR(255) null,
+  lastname            VARCHAR(255) null,
+  customer_id         INT(10) unsigned null,
   constraint customer_address_customer_customer_id_fk
     foreign key (customer_id) references customer (customer_id)
 );
 
-create table quote
-(
-  quote_id int unsigned not null
-    primary key
-);
-
-create table quote_address
-(
-  quote_address_id int unsigned not null
-    primary key
-);
-
-create table quote_item
-(
-  quote_item_id int unsigned auto_increment
-    primary key
-);
-
 create table order_item
 (
-  order_item_id  int unsigned auto_increment
-    primary key,
-  qty_ordered    int unsigned                        not null,
-  qty_refunded   int unsigned                        not null,
-  quote_item_id  int unsigned                        not null,
+  order_item_id  INT(10) UNSIGNED auto_increment primary key,
+  qty_ordered    int(10) UNSIGNED                        not null,
+  qty_refunded   int(10) UNSIGNED                        not null,
+  quote_item_id  int(10) UNSIGNED                        not null,
   price          decimal(12, 4)                      not null,
   raw_total      int(10)                             not null,
-  sku            varchar(60)                         not null,
-  ean            varchar(13)                         null,
-  name           varchar(255)                        not null,
+  sku            VARCHAR(60)                         not null,
+  ean            VARCHAR(13)                         null,
+  name           VARCHAR(255)                        not null,
   tax_amount     decimal(12, 4)                      not null,
   created_at     timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
   updated_at     timestamp                           null,
