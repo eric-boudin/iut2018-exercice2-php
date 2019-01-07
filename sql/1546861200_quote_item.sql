@@ -14,6 +14,14 @@ CREATE TABLE IF NOT EXISTS `quote_item` (
     `shipping_amount_include_tax` DECIMAL(12, 4) UNSIGNED NOT NULL,
     `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NULL,
-    FOREIGN KEY (`quote_id`) REFERENCES quote(`quote_id`),
-    FOREIGN KEY (`product_id`) REFERENCES product(`product_id`)
+	CONSTRAINT `FK_QUOTE_ITEM_QUOTE`
+		FOREIGN KEY (`quote_id`)
+		REFERENCES `quote`(`quote_id`)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT `FK_QUOTE_ITEM_PRODUCT`
+		FOREIGN KEY (`product_id`)
+		REFERENCES `product`(`product_id`)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
