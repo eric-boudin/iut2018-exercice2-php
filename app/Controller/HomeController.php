@@ -4,7 +4,7 @@ namespace Controller;
 use View\ViewModel;
 use Session;
 
-class HomeController extends AbstractController
+class HomeController extends AbstractLoginController
 {
     public function indexAction()
     {

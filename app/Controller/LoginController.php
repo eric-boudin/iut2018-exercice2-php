@@ -23,6 +23,7 @@ class LoginController extends AbstractController
         ]);
 
         if ($user->user_id) {
+            Session::setSession('user_id', $user->user_id);
             Session::setSession('email', $user->email);
             $this->redirect('/home');
         } else {
