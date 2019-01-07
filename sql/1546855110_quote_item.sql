@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `quote_item` (
     `price` DECIMAL(12, 4) UNSIGNED NOT NULL,
     `row_total` DECIMAL(12, 4) UNSIGNED NOT NULL,
     `qty` INT UNSIGNED NOT NULL,
-    `sku` VARCHAR(64) NOT NULL,
+    `sku` VARCHAR(60) NOT NULL,
     `ean` VARCHAR(13) NOT NULL,
     `name` VARCHAR(255) NOT NULL,
     `tax_amount` DECIMAL(12, 4) UNSIGNED NOT NULL,
