@@ -5,7 +5,7 @@ CREATE TABLE `customer_address` (
   `lastname` varchar(255) NOT NULL,
   `street_1` varchar(255) NOT NULL,
   `street_2` varchar(255) DEFAULT NULL,
-  `postcode` varchar(255) NOT NULL,
+  `postcode` varchar(255) NULL,
   `city` varchar(255) NOT NULL,
   `region` varchar(255) DEFAULT NULL,
   `country_id` char(2) NOT NULL,

@@ -7,7 +7,7 @@ CREATE TABLE `quote_address` (
   `lastname` varchar(45) NOT NULL,
   `street_1` varchar(45) NOT NULL,
   `street_2` varchar(45) DEFAULT NULL,
-  `postcode` varchar(45) NOT NULL,
+  `postcode` varchar(45) NULL,
   `city` varchar(45) NOT NULL,
   `region` varchar(45) DEFAULT NULL,
   `country_id` char(2) NOT NULL,
