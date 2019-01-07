@@ -39,13 +39,12 @@ CREATE TABLE IF NOT EXISTS `category` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-
 -- -----------------------------------------------------
 -- Table product_category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `product_category` (
-  `product_id` INT(10) NOT NULL,
-  `category_id` INT(10) NOT NULL,
+  `product_id` INT(10) UNSIGNED NOT NULL,
+  `category_id` INT(10) UNSIGNED NOT NULL,
   `position` INT(10) UNSIGNED NULL DEFAULT 0,
   INDEX `IDX_PRODUCT_CATEGORY_PRODUCT_ID` (`product_id` ASC),
   INDEX `IDX_PRODUCT_CATEGORY_CATEGORY_ID` (`category_id` ASC),
@@ -67,7 +66,7 @@ ENGINE = InnoDB CHARSET=utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `product_image` (
   `product_image_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `product_id` INT(10) NOT NULL,
+  `product_id` INT(10) UNSIGNED NOT NULL,
   `image_path` VARCHAR(255) NOT NULL,
   `image_url_path` VARCHAR(255) NOT NULL,
   `is_active` TINYINT(1) UNSIGNED NULL DEFAULT 0,
