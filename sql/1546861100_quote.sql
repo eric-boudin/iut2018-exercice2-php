@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `quote` (
   `coupon_code` VARCHAR(20) NULL,
   PRIMARY KEY (`quote_id`),
   CONSTRAINT `FK_QUOTE_CUSTOMER`
-	FOREIGN KEY (`customer_id`) REFERENCES customer(`customer_id`)
+    FOREIGN KEY (`customer_id`) REFERENCES customer(`customer_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   UNIQUE INDEX `UQ_QUOTE_COUPON_CODE` (`coupon_code` ASC))
