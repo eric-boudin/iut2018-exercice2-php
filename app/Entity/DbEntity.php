@@ -19,6 +19,49 @@ trait DbEntity
     {
     }
 
+    public function save()
+    {
+        $data = $this->toArray();
+        $table = static::$table;
+        if (!$table) {
+            throw new \RuntimeException('Specify table property in ' . get_class($this) . '.');
+        }
+        self::getConnection()->connect();
+
+        $primaryKey = static::$primaryKey;
+        $keys = array_keys($data);
+        $values = array_map(function ($data) {
+            if (is_int($data)) {
+                return $data;
+            } elseif ($data === null) {
+                return 'NULL';
+            } else {
+                return self::getConnection()->escape($data);
+            }
+        }, $data);
+
+        if (!$this->{static::$primaryKey}) {
+            $query = sprintf("INSERT INTO %s (%s) VALUES (%s);", $table, implode(', ', $keys), implode(', ', $values));
+            $row = self::getConnection()->execute($query);
+            return (bool) $row;
+        } else {
+            $keyvalue = array_combine($keys, $values);
+            $sets = [];
+            foreach ($keyvalue as $key => $value) {
+                if ($key === $primaryKey) {
+                    continue;
+                }
+                $sets[] = "{$key} = {$value}";
+            }
+            $sets = implode(', ', $sets);
+            $where = "{$primaryKey} = {$this->{$primaryKey}}";
+
+            $query = sprintf("UPDATE %s SET %s WHERE %s;", $table, $sets, $where);
+            $row = self::getConnection()->execute($query);
+            return (bool) $row;
+        }
+    }
+
     public static function findOneBy($where)
     {
         $table = static::$table;

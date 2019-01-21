@@ -15,4 +15,19 @@ class Customer extends Entity
     public $password;
     public $created_at;
     public $updated_at;
+
+    public function toArray() : array
+    {
+        return [
+            'customer_id' => $this->customer_id,
+            'email' => $this->email,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'gender' => $this->gender,
+            'dob' => $this->dob,
+            'password' => $this->password,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }

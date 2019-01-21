@@ -17,5 +17,8 @@ class HomeController extends AbstractLoginController
         echo '1';
         $customerAddress = CustomerAddress::findOneBy(1);
         $customer = $customerAddress->customer();
+
+        $customer->updated_at = (new \DateTime)->format('Y-m-d H:i:s');
+        $customer->save();
     }
 }

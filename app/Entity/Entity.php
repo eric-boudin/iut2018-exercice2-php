@@ -8,4 +8,6 @@ abstract class Entity
 
     public static $table;
     public static $primaryKey = 'id';
+
+    abstract public function toArray() : array;
 }

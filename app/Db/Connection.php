@@ -54,6 +54,11 @@ class Connection
         return $stmt->fetch($fetchStyle);
     }
 
+    public function execute(string $query)
+    {
+        return $this->pdo->exec($query);
+    }
+
     public function __destruct()
     {
         try {
