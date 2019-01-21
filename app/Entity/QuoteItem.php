@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class QuoteItem
+class QuoteItem extends Entity
 {
     use DbEntity;
 
