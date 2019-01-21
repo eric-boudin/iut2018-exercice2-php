@@ -1,11 +1,10 @@
 <?php
 namespace Entity;
 
-class Cms
+class Cms extends Entity
 {
-    use DbEntity;
-
     public static $table = 'cms';
+    public static $primaryKey = 'cms_id';
 
     public $cms_id;
     public $url_key;
