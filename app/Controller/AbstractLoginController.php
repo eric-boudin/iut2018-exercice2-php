@@ -16,6 +16,6 @@ class AbstractLoginController extends AbstractController
 
     public function isLoggedIn() : bool
     {
-        return (bool) Session::getSession('user_id');
+        return (bool) Session::getSession('customer_id');
     }
 }

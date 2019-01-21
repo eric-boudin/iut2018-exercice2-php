@@ -1,0 +1,21 @@
+CREATE TABLE `quote_address` (
+  `quote_address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quote_id` int(10) unsigned NOT NULL,
+  `customer_address_id` int(10) unsigned DEFAULT NULL,
+  `address_type` tinyint(1) unsigned NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `street_1` varchar(45) NOT NULL,
+  `street_2` varchar(45) DEFAULT NULL,
+  `postcode` varchar(45) NULL,
+  `city` varchar(45) NOT NULL,
+  `region` varchar(45) DEFAULT NULL,
+  `country_id` char(2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`quote_address_id`),
+  KEY `IDX_QUOTE_ADDRESS_QUOTE` (`quote_id`),
+  KEY `FK_QUOTE_ADDRESS_CUSTOMER_ADDRESS_idx` (`customer_address_id`),
+  CONSTRAINT `FK_QUOTE_ADDRESS_CUSTOMER_ADDRESS` FOREIGN KEY (`customer_address_id`) REFERENCES `customer_address` (`customer_address_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_QUOTE_ADDRESS_QUOTE` FOREIGN KEY (`quote_id`) REFERENCES `quote` (`quote_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

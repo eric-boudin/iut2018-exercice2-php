@@ -45,4 +45,15 @@ trait DbEntity
             return $object;
         }
     }
+
+    public function belongsTo(string $entity, string $foreignKey)
+    {
+        /** @var Entity $entityObject */
+        $entityObject = new $entity;
+        if (!$entityObject instanceof Entity) {
+            throw \RuntimeException("{$entity} is not an Entity.");
+        }
+        $entityObject::findOneBy([$entityObject::$primaryKey, $this->{$foreignKey}]);
+        return $entityObject;
+    }
 }

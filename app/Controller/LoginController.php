@@ -2,7 +2,7 @@
 namespace Controller;
 
 use Session;
-use Entity\User;
+use Entity\Customer;
 use View\ViewModel;
 
 class LoginController extends AbstractController
@@ -16,15 +16,17 @@ class LoginController extends AbstractController
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
-        /** @var User $user */
-        $user = User::findOneBy([
+
+        $password = sha1($password);
+        /** @var Customer $customer */
+        $customer = Customer::findOneBy([
             'email' => $email,
-            'password' => sha1($password)
+            'password' => $password
         ]);
 
-        if ($user->user_id) {
-            Session::setSession('user_id', $user->user_id);
-            Session::setSession('email', $user->email);
+        if ($customer && $customer->customer_id) {
+            Session::setSession('customer_id', $customer->customer_id);
+            Session::setSession('customer_email', $customer->email);
             $this->redirect('/home');
         } else {
             $this->redirect('/login');
