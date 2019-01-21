@@ -8,5 +8,8 @@ else
 
     echo "Enter DB PASSWORD:"
     read $DATABASE_PASSWORD
+
+    echo "Enter DB NAME:"
+    read $DATABASE_PASSWORD
 fi
-cat migrations/*.sql | mysql -u$DATABASE_USERNAME -p$DATABASE_PASSWORD
+cat seeds/*.sql | mysql -u$DATABASE_USERNAME -p$DATABASE_PASSWORD $DATABASE_NAME
