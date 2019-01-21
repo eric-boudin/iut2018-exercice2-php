@@ -1,10 +1,9 @@
 <?php
 chdir(dirname(__DIR__));
 
-include 'app/Autoloader.php';
-\Autoloader::register();
+include './vendor/autoload.php';
 
-(new \Application)->run();
+(new \App\Application)->run();
 
 // Créer un système de thème
 // Basculer toutes les vues actuelles dans un dossier view/boostrap

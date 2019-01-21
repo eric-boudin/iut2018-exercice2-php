@@ -1,7 +1,9 @@
 <?php
+namespace App;
+
 define('APP_ROOT', dirname(__DIR__));
-use Routing\Router as R;
-use Db\Connection;
+use App\Routing\Router as R;
+use App\Db\Connection;
 
 final class Application
 {

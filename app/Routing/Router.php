@@ -1,5 +1,5 @@
 <?php
-namespace Routing;
+namespace App\Routing;
 
 use RuntimeException;
 
@@ -37,7 +37,7 @@ class Router
             if (!in_array($requestMethod, $routeParams['methods'])) {
                 continue;
             }
-            $className = "\\Controller\\{$routeParams['callable'][0]}";
+            $className = "\\App\\Controller\\{$routeParams['callable'][0]}";
             if (!class_exists($className)) {
                 throw new RuntimeException("Controller {$className} not found.");
             }

@@ -1,4 +1,5 @@
 <?php
+namespace App\View;
 
 class ViewJsonModel implements ViewModelInterface
 {

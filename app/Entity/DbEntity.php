@@ -1,8 +1,8 @@
 <?php
-namespace Entity;
+namespace App\Entity;
 
-use Config;
-use Db\Connection;
+use App\Config;
+use App\Db\Connection;
 
 trait DbEntity
 {

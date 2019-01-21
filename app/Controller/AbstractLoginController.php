@@ -1,7 +1,7 @@
 <?php
-namespace Controller;
+namespace App\Controller;
 
-use Session;
+use App\Session;
 
 class AbstractLoginController extends AbstractController
 {
