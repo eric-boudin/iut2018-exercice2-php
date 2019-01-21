@@ -6,6 +6,7 @@ class QuoteItem
     use DbEntity;
 
     public static $table = 'quote_item';
+    public static $primaryKey = 'quote_item_id';
 
     public $quote_item_id;
     public $quote_id;
