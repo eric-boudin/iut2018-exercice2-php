@@ -1,7 +1,9 @@
 <?php
+namespace App;
+
 define('APP_ROOT', dirname(__DIR__));
-use Routing\Router as R;
-use Db\Connection;
+use App\Routing\Router as R;
+use App\Db\Connection;
 
 final class Application
 {
@@ -35,12 +37,17 @@ final class Application
         );
     }
 
-    public function run()
+    public function bootstrap()
     {
         $this->loadConfig();
         $this->loadRoutes();
-        $this->loadSession();
         $this->loadDb();
+    }
+
+    public function run()
+    {
+        $this->bootstrap();
+        $this->loadSession();
         $this->dispatch();
     }
 }

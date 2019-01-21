@@ -1,9 +1,9 @@
 <?php
-namespace Controller;
+namespace App\Controller;
 
-use Session;
-use Entity\Customer;
-use View\ViewModel;
+use App\Session;
+use App\Entity\Customer;
+use App\View\ViewModel;
 
 class LoginController extends AbstractController
 {

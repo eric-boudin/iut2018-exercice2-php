@@ -1,8 +1,8 @@
 <?php
-namespace Entity;
+namespace App\Entity;
 
-use Config;
-use Db\Connection;
+use App\Config;
+use App\Db\Connection;
 
 trait DbEntity
 {
@@ -19,7 +19,7 @@ trait DbEntity
     {
     }
 
-    public static function findOneBy(array $where)
+    public static function findOneBy($where)
     {
         $table = static::$table;
         if (!$table) {
@@ -27,6 +27,11 @@ trait DbEntity
         }
         self::getConnection()->connect();
         $select = "SELECT * FROM {$table}";
+
+        if (!is_array($where)) {
+            $where = [static::$primaryKey => $where];
+        }
+
         if (!empty($where)) {
             $select .= " WHERE ";
             $wheres = [];
@@ -53,7 +58,6 @@ trait DbEntity
         if (!$entityObject instanceof Entity) {
             throw \RuntimeException("{$entity} is not an Entity.");
         }
-        $entityObject::findOneBy([$entityObject::$primaryKey, $this->{$foreignKey}]);
-        return $entityObject;
+        return $entityObject::findOneBy([$entityObject::$primaryKey, $this->{$foreignKey}]);
     }
 }

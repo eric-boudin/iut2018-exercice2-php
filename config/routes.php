@@ -1,5 +1,5 @@
 <?php
-use Routing\Router as R;
+use App\Routing\Router as R;
 
 R::get(
     '/login',
@@ -14,4 +14,9 @@ R::post(
 R::get(
     '/home',
     ['HomeController', 'indexAction']
+);
+
+R::get(
+    '/home/test',
+    ['HomeController', 'testAction']
 );

@@ -1,7 +1,7 @@
 <?php
-namespace Controller;
+namespace App\Controller;
 
-use View\ViewModelInterface;
+use App\View\ViewModelInterface;
 
 abstract class AbstractController
 {

@@ -1,7 +1,7 @@
 <?php
-namespace View;
+namespace App\View;
 
-use Config;
+use App\Config;
 
 class ViewModel implements ViewModelInterface
 {
