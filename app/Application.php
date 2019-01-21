@@ -37,12 +37,17 @@ final class Application
         );
     }
 
-    public function run()
+    public function bootstrap()
     {
         $this->loadConfig();
         $this->loadRoutes();
-        $this->loadSession();
         $this->loadDb();
+    }
+
+    public function run()
+    {
+        $this->bootstrap();
+        $this->loadSession();
         $this->dispatch();
     }
 }
